@@ -1,0 +1,37 @@
+plugins {
+    id 'groovy'
+    id 'java'
+    id 'java-gradle-plugin'
+    id 'com.gradle.plugin-publish' version '0.10.0'
+}
+
+group 'com.gradle.study'
+version '1.0.0'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.4.12'
+    compile gradleApi()
+    compile localGroovy()
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+pluginBundle {
+    website = ''
+}
+
+gradlePlugin {
+    plugins {
+        greetingPlugin {
+            id = 'com.gradle.study'
+//            displayName = 'greeting-plugin'
+            description = 'a plugin demo that can show author name'
+            implementationClass = 'com.gradle.study.GreetingPlugin'
+        }
+    }
+}
